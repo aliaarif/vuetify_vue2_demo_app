@@ -13,10 +13,12 @@ export default new Vuetify({
     colors: {
         background: '#FFFFFF',
         surface: '#FFFFFF',
-        primary: '#6200EE',
-        'primary-darken-1': '#3700B3',
-        secondary: '#03DAC6',
-        'secondary-darken-1': '#018786',
+
+        primary: '#1A237E',
+        'primary-darken-1': '#3949AB',
+
+        secondary: '#BF360C',
+        'secondary-darken-1': '#F4511E',
         error: '#B00020',
         info: '#2196F3',
         success: '#4CAF50',

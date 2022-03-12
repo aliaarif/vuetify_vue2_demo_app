@@ -1,6 +1,6 @@
 <template>
   <v-row align="center" justify="center">
-    <v-col cols="12" sm="6" md="6">
+    <v-col cols="12" sm="8" md="6">
       <v-card elevation="24">
         <v-window v-model="step">
           <v-window-item :value="1">
@@ -73,27 +73,6 @@
           </v-window-item>
           <v-window-item :value="2">
             <v-row class="fill-height">
-              <v-col cols="12" md="4" class="indigo darken-4">
-                <v-card-text class="white--text mt-12">
-                  <h1 class="text-center display-1">Or Register with</h1>
-                  <auth-with-social styleFlag="dark" />
-                  <p class="text-center white--text mt-4">
-                    To keep connected with us <br />please login with your auth
-                    credentials
-                  </p>
-                </v-card-text>
-                <h3
-                  class="text-center mt-2 white--text text--darken-4"
-                  @click="step--"
-                >
-                  Already have an account ?
-                </h3>
-                <div class="text-center mt-2 mb-2">
-                  <v-btn rounded outlined="" dark @click="step--">
-                    SIGN IN
-                  </v-btn>
-                </div>
-              </v-col>
               <v-col cols="12" md="8">
                 <v-card-text class="mt-2">
                   <h1
@@ -147,6 +126,27 @@
                 </v-card-text>
                 <div class="text-center mt-2 mb-2">
                   <v-btn rounded color="indigo darken-4" dark> SIGN UP </v-btn>
+                </div>
+              </v-col>
+              <v-col cols="12" md="4" class="indigo darken-4">
+                <v-card-text class="white--text mt-12">
+                  <h1 class="text-center display-1">Register with</h1>
+                  <auth-with-social styleFlag="dark" />
+                  <p class="text-center white--text mt-4">
+                    To keep connected with us <br />please login with your auth
+                    credentials
+                  </p>
+                </v-card-text>
+                <h3
+                  class="text-center mt-2 white--text text--darken-4"
+                  @click="step--"
+                >
+                  Already have an account ?
+                </h3>
+                <div class="text-center mt-2 mb-2">
+                  <v-btn rounded outlined="" dark @click="step--">
+                    SIGN IN
+                  </v-btn>
                 </div>
               </v-col>
             </v-row>
