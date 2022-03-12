@@ -3,7 +3,7 @@
   <v-app-bar app color="indigo darken-4" dense dark elevation="4">
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-    <v-toolbar-title>Page title</v-toolbar-title>
+    <v-toolbar-title>My Online Store</v-toolbar-title>
 
     <v-spacer></v-spacer>
 

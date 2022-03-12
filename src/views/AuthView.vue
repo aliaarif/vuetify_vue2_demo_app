@@ -18,19 +18,9 @@
                   >
                     Login Panel
                   </h1>
-                  <div class="text-center mt-2" mt-4>
-                    <v-btn class="mx-2" fab color="indigo darken-4" outlined>
-                      <v-icon>fab fa-facebook-f</v-icon>
-                    </v-btn>
-                    <v-btn class="mx-2" fab color="indigo darken-4" outlined>
-                      <v-icon>fab fa-google-plus-g</v-icon>
-                    </v-btn>
-                    <v-btn class="mx-2" fab color="indigo darken-4" outlined>
-                      <v-icon>fab fa-linkedin</v-icon>
-                    </v-btn>
-                  </div>
-                  <h4 class="text-center mt-2 indigo--text text--darken-4">
-                    Ensure you email for registration
+                  <auth-with-social styleFlag="flat" />
+                  <h4 class="text-center mt-4 mb-4 indigo--text text--darken-4">
+                    please provide your auth credention
                   </h4>
                   <v-form id="login_form" name="login_form">
                     <v-text-field
@@ -67,7 +57,7 @@
               </v-col>
               <v-col cols="12" md="4" class="indigo darken-4">
                 <v-card-text class="white--text mt-12">
-                  <h1 class="text-center display-1">Application Name</h1>
+                  <h1 class="text-center display-1">My Online Store</h1>
                   <p class="text-center white--text mt-4">
                     Please enter your Auth credentials <br />to start acceess
                     the application
@@ -85,12 +75,19 @@
             <v-row class="fill-height">
               <v-col cols="12" md="4" class="indigo darken-4">
                 <v-card-text class="white--text mt-12">
-                  <h1 class="text-center display-1">Welcome Back!</h1>
+                  <h1 class="text-center display-1">Or Register with</h1>
+                  <auth-with-social styleFlag="dark" />
                   <p class="text-center white--text mt-4">
                     To keep connected with us <br />please login with your auth
                     credentials
                   </p>
                 </v-card-text>
+                <h3
+                  class="text-center mt-2 white--text text--darken-4"
+                  @click="step--"
+                >
+                  Already have an account ?
+                </h3>
                 <div class="text-center mt-2 mb-2">
                   <v-btn rounded outlined="" dark @click="step--">
                     SIGN IN
@@ -110,19 +107,10 @@
                   >
                     Registration Panel
                   </h1>
-                  <div class="text-center mt-2" mt-4>
-                    <v-btn class="mx-2" fab color="indigo darken-4" outlined>
-                      <v-icon>fab fa-facebook-f</v-icon>
-                    </v-btn>
-                    <v-btn class="mx-2" fab color="indigo darken-4" outlined>
-                      <v-icon>fab fa-google-plus-g</v-icon>
-                    </v-btn>
-                    <v-btn class="mx-2" fab color="indigo darken-4" outlined>
-                      <v-icon>fab fa-linkedin</v-icon>
-                    </v-btn>
-                  </div>
-                  <h4 class="text-center mt-2 indigo--text text--darken-4">
-                    Ensure you email for registration
+
+                  <h4 class="text-center mt-4 mb-4 indigo--text text--darken-4">
+                    please provide your name, email and password for
+                    registration
                   </h4>
                   <v-form id="login_form" name="login_form">
                     <v-text-field
@@ -156,12 +144,6 @@
                       dense
                     ></v-text-field>
                   </v-form>
-                  <h3
-                    class="text-center mt-3 indigo--text text--darken-4"
-                    @click="step--"
-                  >
-                    Already have an account ?
-                  </h3>
                 </v-card-text>
                 <div class="text-center mt-2 mb-2">
                   <v-btn rounded color="indigo darken-4" dark> SIGN UP </v-btn>
@@ -176,10 +158,11 @@
 </template>
 
 <script lang="ts">
+import AuthWithSocial from "@/components/common/AuthWithSocial.vue";
 import Vue from "vue";
 export default Vue.extend({
   name: "Auth",
-  components: {},
+  components: { AuthWithSocial },
   props: {
     source: String,
   },
