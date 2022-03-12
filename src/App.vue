@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- <v-navigation-drawer app> </v-navigation-drawer> -->
-    <v-app-bar app color="indigo darken-4" dense dark>
+    <v-app-bar app color="indigo darken-4" dense dark v-if="auth">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
       <v-toolbar-title>Page title</v-toolbar-title>
@@ -59,7 +59,7 @@ export default Vue.extend({
   components: {},
 
   data: () => ({
-    //
+    auth: true,
   }),
 });
 </script>

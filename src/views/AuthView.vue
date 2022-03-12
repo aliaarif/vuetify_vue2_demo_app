@@ -1,7 +1,7 @@
 <template>
   <v-row align="center" justify="center">
-    <v-col cols="12" sm="8" md="8">
-      <v-card elevation="12">
+    <v-col cols="12" sm="6" md="6">
+      <v-card elevation="24">
         <v-window v-model="step">
           <v-window-item :value="1">
             <v-row>
