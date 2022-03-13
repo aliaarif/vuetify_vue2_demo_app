@@ -8,15 +8,15 @@
 
       <v-toolbar-title class="text-uppercase white--text">
         <!-- <span class="font-weight-light orange--text">My </span> -->
-        <span>My Online Store</span>
+        <v-btn text to="/">My Online Store</v-btn>
         <!-- <span class="font-weight-bold green--text"> Store</span> -->
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn text>
+      <v-btn text to="/cart">
         <v-icon left>shopping-cart-o</v-icon>
-        <span>Cart </span>
+        <span>Cart (0)</span>
       </v-btn>
 
       <!-- <router-link to="/feed" tag="v-btn text">
@@ -25,7 +25,7 @@
         </v-btn>
       </router-link> -->
 
-      <v-btn text v-if="!auth">
+      <v-btn text to="/auth" v-if="!auth">
         <span>Sign In </span>
         <v-icon right>lock</v-icon>
       </v-btn>
@@ -59,7 +59,12 @@
     </v-menu>
     -->
     </v-app-bar>
-    <v-navigation-drawer app v-model="drawer" class="primary darken-4">
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      class="primary darken-4"
+      v-if="auth"
+    >
       <p>Test</p>
     </v-navigation-drawer>
   </nav>
@@ -73,7 +78,7 @@ export default Vue.extend({
 
   data: () => ({
     drawer: true,
-    auth: true,
+    auth: false,
   }),
 });
 </script>
