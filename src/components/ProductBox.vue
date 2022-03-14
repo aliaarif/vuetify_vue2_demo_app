@@ -49,7 +49,7 @@
       </v-card-text>
 
       <v-card-actions class="text-center">
-        <v-btn color="primary darken-4" text @click="addToCart">
+        <v-btn color="primary darken-4" text @click="addToCart(product._id)">
           Add To Cart
         </v-btn>
 
@@ -78,6 +78,7 @@
 
 
 <script lang="ts">
+import axios from "axios";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -88,7 +89,7 @@ export default Vue.extend({
   },
 
   data: () => ({
-    //product: {},
+    item: {},
     quantity: 1,
   }),
   mounted() {
@@ -113,17 +114,27 @@ export default Vue.extend({
     //     });
     //   this.$store.commit("setIsLoading", false);
     // },
-    addToCart() {
-      if (isNaN(this.quantity) || this.quantity < 1) {
-        this.quantity = 1;
-      }
+    async addToCart(p_id: any) {
+      await axios
+        .get(`/product/${p_id}`)
+        .then((response) => {
+          this.item = response.data.data;
+          //console.log(response.data.data.name);
 
-      const item = {
-        product: this.product,
-        quantity: this.quantity,
-      };
+          if (isNaN(this.quantity) || this.quantity < 1) {
+            this.quantity = 1;
+          }
 
-      this.$store.commit("addToCart", item);
+          const item = {
+            product: this.item,
+            quantity: this.quantity,
+          };
+
+          this.$store.commit("addToCart", item);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       // toast({
       //   message: "The product was added to the cart.",

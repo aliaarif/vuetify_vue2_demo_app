@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <navbar />
+    <navbar v-bind:cartTotalLength="cartTotalLength" />
     <v-main>
       <v-container fluid>
         <router-view v-slot="{ Component }">
@@ -52,13 +52,13 @@ export default Vue.extend({
     this.cart = this.$store.state.cart;
   },
   computed: {
-    // cartTotalLength() {
-    //   let totalLength = 0;
-    //   for (let i = 0; i < this.cart.items.length; i++) {
-    //     totalLength += this.cart.items[i].quantity;
-    //   }
-    //   return totalLength;
-    // },
+    cartTotalLength(): number {
+      let totalLength = 0;
+      for (let i = 0; i < this.cart.items.length; i++) {
+        totalLength += this.cart.items[i]["quantity"];
+      }
+      return totalLength;
+    },
   },
 });
 </script>

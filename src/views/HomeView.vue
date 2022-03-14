@@ -25,7 +25,7 @@ export default Vue.extend({
   }),
   mounted() {
     this.getLatestProducts();
-    document.title = "Home | My Online Store";
+    document.title = "My Online Store";
   },
   methods: {
     async getLatestProducts() {

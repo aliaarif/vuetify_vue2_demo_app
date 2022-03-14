@@ -29,16 +29,22 @@ export default new Vuex.Store({
       }
 
     },
-    // addToCart(state, item) {
+    addToCart(state: any, item: any) {
+      //let existingCartLength = state.cart.items.length
+      //console.log(state.cart.items.length);
+      //console.log(item.product._id);
 
-    //   const exists = state.cart.items.filter(i => i.product.id === item.product.id)
-    //   if (exists.length) {
-    //     exists[0].quantity = parseInt(exists[0].quantity) + parseInt(item.quantity)
-    //   } else {
-    //     state.cart.items.push(item)
-    //   }
-    //   localStorage.setItem('cart', JSON.stringify(state.cart))
-    // },
+      const exists: any = state.cart.items.filter((i: { product: { _id: any } }) => {
+        return i.product._id === item.product._id
+      })
+
+      if (exists.length) {
+        exists[0].quantity = parseInt(exists[0].quantity) + parseInt(item.quantity)
+      } else {
+        state.cart.items.push(item)
+      }
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
     setIsLoading(state, status) {
       state.isLoading = status
     },

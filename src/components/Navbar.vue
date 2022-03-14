@@ -16,7 +16,7 @@
 
       <v-btn text to="/cart">
         <v-icon left>shopping-cart-o</v-icon>
-        <span>Cart (0)</span>
+        <span>Cart ({{ cartTotalLength }})</span>
       </v-btn>
 
       <!-- <router-link to="/feed" tag="v-btn text">
@@ -75,10 +75,18 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "Navbar",
+  props: {
+    cartTotalLength: Number,
+  },
 
   data: () => ({
     drawer: true,
     auth: false,
   }),
+  // computed: {
+  //   cartTotalLength() {
+  //     return this.$parent.cartTotalLength;
+  //   },
+  // },
 });
 </script>
