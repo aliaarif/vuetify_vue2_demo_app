@@ -44,15 +44,17 @@ export default {
     async getProduct() {
       this.$store.commit("setIsLoading", true);
 
-      const category_slug = this.$route.params.category_slug;
-      const product_slug = this.$route.params.product_slug;
+      const p_id = this.$route.params.p_id;
+      //const product_slug = this.$route.params.product_slug;
 
       await axios
-        .get(`/products/${category_slug}/${product_slug}/`)
+        .get(`/product/${p_id}`)
         .then((response) => {
-          this.product = response.data;
+          //console.log(response.data.data);
 
-          document.title = this.product.name + " | My Online Store";
+          this.product = response.data.data;
+
+          document.title = this.product["name"] + " | My Online Store";
         })
         .catch((error) => {
           console.log(error);

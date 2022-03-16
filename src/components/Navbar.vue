@@ -15,7 +15,7 @@
       <v-spacer></v-spacer>
 
       <v-btn text to="/cart">
-        <v-icon left>shopping-cart-o</v-icon>
+        <v-icon left>shopping_cart-o</v-icon>
         <span>Cart ({{ cartTotalLength }})</span>
       </v-btn>
 

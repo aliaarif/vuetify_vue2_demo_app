@@ -49,13 +49,25 @@
       </v-card-text>
 
       <v-card-actions class="text-center">
-        <v-btn color="primary darken-4" text @click="addToCart(product._id)">
+        <v-btn
+          color="primary darken-4"
+          text
+          @click="addToCart(product._id, 'add')"
+        >
           Add To Cart
         </v-btn>
 
-        <v-btn color="primary darken-4" text> Buy Now </v-btn>
+        <v-btn
+          color="primary darken-4"
+          text
+          @click="addToCart(product._id, 'buy')"
+        >
+          Buy Now
+        </v-btn>
 
-        <v-btn color="primary darken-4" text> Details </v-btn>
+        <v-btn text :to="'/product/' + product._id" color="primary darken-4">
+          Details
+        </v-btn>
       </v-card-actions>
     </v-card>
 
@@ -114,7 +126,7 @@ export default Vue.extend({
     //     });
     //   this.$store.commit("setIsLoading", false);
     // },
-    async addToCart(p_id: any) {
+    async addToCart(p_id: any, flag: any) {
       await axios
         .get(`/product/${p_id}`)
         .then((response) => {
@@ -131,6 +143,9 @@ export default Vue.extend({
           };
 
           this.$store.commit("addToCart", item);
+          if (flag === "buy") {
+            this.$router.push("/cart");
+          }
         })
         .catch((error) => {
           console.log(error);

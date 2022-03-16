@@ -74,8 +74,8 @@ const routes: Array<RouteConfig> = [
     }
   },
   {
-    path: '/:category_slug/:product_slug',
-    name: 'Product',
+    path: '/product/:p_id',
+    name: 'ProductInfo',
     component: Product
   },
   {
