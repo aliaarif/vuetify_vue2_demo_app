@@ -6,7 +6,7 @@ import vuetify from './plugins/vuetify'
 import axios from 'axios'
 
 // axios.defaults.baseURL = 'http://127.0.0.1:8000/'
-axios.defaults.baseURL = 'http://127.0.0.1:3333/'
+axios.defaults.baseURL = 'http://127.0.0.1:4912/api/v1/'
 
 
 Vue.config.productionTip = false

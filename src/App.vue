@@ -1,29 +1,26 @@
 <template>
   <v-app>
-    <navbar v-bind:cartTotalLength="cartTotalLength" />
+    <navbar dense v-bind:cartTotalLength="cartTotalLength" />
+    <drawer dense />
     <v-main>
-      <v-container fluid>
-        <router-view v-slot="{ Component }">
-          <transition
-            enter-acitve-class="animate__animated animate__fadeInLeft"
-            leave-acitve-class="animate__animated animate__fadeOutLeft"
-            mode="out-in"
-          >
-            <component :is="Component" />
-          </transition>
-        </router-view>
-      </v-container>
+      <router-view v-slot="{ Component }">
+        <transition
+          enter-acitve-class="animate__animated animate__fadeInLeft"
+          leave-acitve-class="animate__animated animate__fadeOutLeft"
+          mode="out-in"
+        >
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
-    </v-footer>
+    <!-- <footer v-bind:cartTotalLength="cartTotalLength" /> -->
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Navbar from "./components/Navbar.vue";
+import Drawer from "./components/Drawer.vue";
 import axios from "axios";
 
 export default Vue.extend({
@@ -31,6 +28,7 @@ export default Vue.extend({
 
   components: {
     Navbar,
+    Drawer,
   },
 
   data: () => ({

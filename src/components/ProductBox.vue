@@ -1,91 +1,66 @@
 <template>
-  <v-col class="mb-4">
-    <!-- <v-card>
+  <v-hover v-slot="{ hover }" close-delay="50">
+    <v-card
+      :elevation="hover ? 16 : 1"
+      :class="{ 'on-hover': hover }"
+      class="mx-auto"
+      color="primary darken-4"
+      tile
+      align="center"
+    >
       <v-img
-        :src="card.src"
-        class="white--text align-end"
-        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        height="200px"
+        :aspect-ratio="16 / 9"
+        src="https://cdn.vuetifyjs.com/images/cards/kitchen.png"
       >
-        <v-card-title v-text="card.title"></v-card-title>
+        <v-expand-transition>
+          <div
+            v-if="hover"
+            class="
+              d-flex
+              transition-fast-in-fast-out
+              primary
+              darken-4
+              v-card--reveal
+              text-h2
+              white--text
+            "
+            style="height: 100%"
+          >
+            ${{ product.price }}
+          </div>
+        </v-expand-transition>
       </v-img>
-
-      <v-card-actions>
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
+      <v-card-text class="pt-6" style="position: relative">
+        <v-btn
+          absolute
+          :color="hover ? '#f34f64' : 'primary darken-4'"
+          class="white--text"
+          fab
+          small
+          right
+          top
+        >
+          <v-icon>mdi-cart</v-icon>
         </v-btn>
 
-        <v-btn icon>
-          <v-icon>mdi-bookmark</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-share-variant</v-icon>
-        </v-btn>
-      </v-card-actions>
-    </v-card> -->
-
-    <v-card class="mx-auto" max-width="400">
-      <v-img
-        class="white--text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-        <v-card-title>{{ product.name }}</v-card-title>
-      </v-img>
-
-      <v-card-subtitle class="pb-0 text--primary text--darken-4">
-        ${{ product.price ? product.price : "12.9" }}
-      </v-card-subtitle>
-
-      <v-card-text>
-        <div class="text--primary text--darken-4">Whitehaven Beach1</div>
-
-        <div class="text--primary text--darken-4">
-          Whitsunday Island, Whitsunday Islands
+        <div class="font-weight-light grey--text text-h6 mb-2">
+          {{ product.title }}
         </div>
+
+        <!-- <h4 class="text-h4 font-weight-light grey--text mb-2">
+          {{ product.title }}
+        </h4> -->
+        <div class="font-weight-light grey--text text-h6 mb-2">
+          ( In {{ product.category.title }} )
+        </div>
+
+        <!-- <div class="font-weight-light grey--text text-h6 mb-2">
+          Our Vintage kitchen utensils delight any chef.<br />
+          Made of bamboo by hand
+        </div> -->
       </v-card-text>
-
-      <v-card-actions class="text-center">
-        <v-btn
-          color="primary darken-4"
-          text
-          @click="addToCart(product._id, 'add')"
-        >
-          Add To Cart
-        </v-btn>
-
-        <v-btn
-          color="primary darken-4"
-          text
-          @click="addToCart(product._id, 'buy')"
-        >
-          Buy Now
-        </v-btn>
-
-        <v-btn text :to="'/product/' + product._id" color="primary darken-4">
-          Details
-        </v-btn>
-      </v-card-actions>
     </v-card>
-
-    <!-- <div class="box">
-      <figure class="image mb-4">
-        <img :src="product.get_thumbnail" />
-      </figure>
-      <h3 class="is-size-4">{{ product.name }}</h3>
-      <p class="is-size-6 has-text-grey">${{ product.price }}</p>
-
-      <router-link
-        v-bind:to="product.get_absolute_url"
-        class="button is-dark mt-4"
-      >
-        View Details
-      </router-link>
-    </div> -->
-  </v-col>
+  </v-hover>
 </template>
 
 
@@ -103,6 +78,9 @@ export default Vue.extend({
   data: () => ({
     item: {},
     quantity: 1,
+    multiLine: true,
+    snackbar: false,
+    timeout: 2000,
   }),
   mounted() {
     //this.getProduct();
@@ -143,6 +121,7 @@ export default Vue.extend({
           };
 
           this.$store.commit("addToCart", item);
+          this.snackbar = true;
           if (flag === "buy") {
             this.$router.push("/cart");
           }
@@ -163,3 +142,15 @@ export default Vue.extend({
   },
 });
 </script>
+<style>
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+}
+</style>
+
+

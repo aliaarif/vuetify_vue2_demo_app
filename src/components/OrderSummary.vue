@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "OrderSummary",
+  name: "Payment",
   props: {
     order: Object,
   },

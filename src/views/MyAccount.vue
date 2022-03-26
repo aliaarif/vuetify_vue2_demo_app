@@ -27,7 +27,7 @@
 <script>
 import axios from "axios";
 
-import OrderSummary from "@/components/OrderSummary.vue";
+import OrderSummary from "@/components/Payment.vue";
 
 export default {
   name: "MyAccount",

@@ -1,15 +1,43 @@
 <template>
-  <nav>
-    <v-app-bar app color="primary darken-4" dense dark elevation="4">
-      <v-app-bar-nav-icon
+  <v-app-bar app dark color="primary darken-4" dense flat elevation="4">
+    <!-- <v-app-bar-nav-icon
+      @click="drawer = !drawer"
+      v-if="auth"
+    ></v-app-bar-nav-icon> -->
+
+    <v-tabs color="#F34F64">
+      <!-- <v-btn text class="withoutuppercase"> My Online Store </v-btn> -->
+
+      <v-tabs-slider color="#F34F64"></v-tabs-slider>
+
+      <v-tab class="withoutuppercase"> Shirts </v-tab>
+      <v-tab class="withoutuppercase"> Shoes </v-tab>
+      <v-tab class="withoutuppercase"> Jackets </v-tab>
+      <v-tab class="withoutuppercase"> Hats </v-tab>
+      <v-tab class="withoutuppercase"> Trousers </v-tab>
+    </v-tabs>
+    <v-btn small color="#F34F64">
+      <v-icon>mdi-chevron-down</v-icon>
+    </v-btn>
+    <v-spacer></v-spacer>
+    <v-divider vertical inset class="mr-4"></v-divider>
+    <v-text-field
+      label="Search"
+      prepend-inner-icon="mdi-magnify"
+      dense
+      class="mt-10"
+    ></v-text-field>
+    <v-btn text small class="withoutuppercase grey--text">
+      Hi, Aarif Ali Chauhan
+      <v-icon small>mdi-chevron-down</v-icon>
+    </v-btn>
+    <!-- <v-app-bar-nav-icon
         @click="drawer = !drawer"
         v-if="auth"
       ></v-app-bar-nav-icon>
 
       <v-toolbar-title class="text-uppercase white--text">
-        <!-- <span class="font-weight-light orange--text">My </span> -->
         <v-btn text to="/">My Online Store</v-btn>
-        <!-- <span class="font-weight-bold green--text"> Store</span> -->
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -19,12 +47,6 @@
         <span>Cart ({{ cartTotalLength }})</span>
       </v-btn>
 
-      <!-- <router-link to="/feed" tag="v-btn text">
-        <v-btn color="black" flat value="auth">
-          <span>Lofin</span>
-        </v-btn>
-      </router-link> -->
-
       <v-btn text to="/auth" v-if="!auth">
         <span>Sign In </span>
         <v-icon right>lock</v-icon>
@@ -33,41 +55,8 @@
       <v-btn text v-else>
         <span>Sign Out </span>
         <v-icon right>exit_to_app</v-icon>
-      </v-btn>
-
-      <!-- 
-    <v-menu left bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn text v-bind="attrs" v-on="on">
-          Hi Username
-        </v-btn>
-      </template>
-
-      <v-list>
-        <v-list-item>
-          <v-list-item-title>Profile</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Settings</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>
-            <v-icon right>exit_to_app</v-icon> SIGN OUT</v-list-item-title
-          >
-        </v-list-item>
-      </v-list> 
-    </v-menu>
-    -->
-    </v-app-bar>
-    <v-navigation-drawer
-      app
-      v-model="drawer"
-      class="primary darken-4"
-      v-if="auth"
-    >
-      <p>Test</p>
-    </v-navigation-drawer>
-  </nav>
+      </v-btn> -->
+  </v-app-bar>
 </template>
 
 <script lang="ts">
@@ -81,12 +70,33 @@ export default Vue.extend({
 
   data: () => ({
     drawer: true,
-    auth: false,
+    navLinks: ["Dashboard", "Messages", "Profile", "Updates"],
+    auth: true,
   }),
-  // computed: {
-  //   cartTotalLength() {
-  //     return this.$parent.cartTotalLength;
-  //   },
-  // },
 });
 </script>
+<style>
+.v-tabs-slider {
+  position: absolute;
+  top: 30%;
+  left: -50%;
+  transform: translate(-50%, -50%);
+  height: 15px !important;
+  width: 20px !important;
+  border-radius: 150px 150px 0px 0px;
+  background-color: #f34f64;
+}
+.v-tab .withoutupercase {
+  text-transform: none !important;
+}
+.v-tabs {
+  width: 30% !important;
+}
+.v-btn:not(.v-btn--round) .v-size--small {
+  min-width: 10px !important;
+  padding: 0 5px !important;
+}
+.theme--dark .v-text-field > .v-input__control > .v-input__slot::before {
+  border-color: #323b50 !important;
+}
+</style>
